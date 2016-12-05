@@ -4,6 +4,9 @@
 /*.iml
 /deploy
 /target
-/build/
+**/build/
 **/node_modules
 **/jsdoc
+*.project
+**/.settings/
+**/target/

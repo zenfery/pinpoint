@@ -33,4 +33,21 @@
 	
 	<bean id="jobFailListener" class="com.navercorp.pinpoint.web.batch.JobFailListener"/>
 	
+    <bean id="alarmMessageSender" class="com.navercorp.pinpoint.web.alarm.AlarmMessageSenderImpl4SendEmail"/>
+	
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="#{batchProps['batch.mail.host']}"></property>
+        <property name="port" value="#{batchProps['batch.mail.port']}"></property>
+        <property name="username" value="#{batchProps['batch.mail.username']}"></property>
+        <property name="password" value="#{batchProps['batch.mail.password']}"></property>
+        <property name="defaultEncoding" value="#{batchProps['batch.mail.defaultEncoding']}" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.timeout">#{batchProps['batch.mail.smtp.timeout']}</prop>
+                <prop key="mail.transport.protocol">#{batchProps['batch.mail.transport.protocol']}</prop>
+            </props>
+        </property>
+    </bean>
+	
 </beans>
